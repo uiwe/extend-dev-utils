@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <title>页面内容替换</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="stylesheet" href="sdk.css" />
+    <link rel="stylesheet" href="helper.css" />
+    <link rel="stylesheet" href="iconfont.css" />
+    <!-- 这是默认主题所需的，如果是其他主题则不需要 -->
+    <!-- 从 1.1.0 开始 sdk.css 将不支持 IE 11，如果要支持 IE11 请引用这个 css，并把前面那个删了 -->
+    <!-- <link rel="stylesheet" href="sdk-ie11.css" /> -->
+    <!-- 不过 amis 开发团队几乎没测试过 IE 11 下的效果，所以可能有细节功能用不了，如果发现请报 issue -->
+    <style>
+        html,
+        body,
+        .app-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="root" class="app-wrapper"></div>
+<script src="sdk.js"></script>
+<script type="text/javascript">
+    (function () {
+        let amis = amisRequire('amis/embed');
+        // 通过替换下面这个配置来生成不同页面
+        let amisJSON = {
+            "type": "form",
+            "title": "内容替换",
+            "body": [
+                {
+                    "type": "textarea",
+                    "label": "原文",
+                    "name": "origin_content",
+                    "description": "例如a,b,c",
+                    "required": true
+                },
+                {
+                    "type": "checkboxes",
+                    "label": "分隔符",
+                    "name": "split_pattern",
+                    "options": [
+                        {
+                            "label": "逗号",
+                            "value": "3"
+                        },
+                        {
+                            "label": "空格",
+                            "value": "1"
+                        },
+                        {
+                            "label": "TAB",
+                            "value": "2"
+                        },
+                        {
+                            "label": "分号",
+                            "value": "4"
+                        }
+                    ],
+                    "required": true,
+                    "joinValues": true,
+                    "source": "",
+                    "defaultCheckAll": true
+                },
+                {
+                    "type": "textarea",
+                    "label": "替换内容模板",
+                    "name": "pattern_template",
+                    "description": "例如{0}->{1}",
+                    "required": true
+                },
+                {
+                    "type": "button",
+                    "label": "替换内容",
+                    "name": "replace",
+                    "onClick": "let split_dic = { '1': ' ', '2': '  ', '3': ',', '4': ';' };\nconsole.log(props.formStore.data);\nconsole.log(props.formStore.data.split_pattern);\nlet origin_content = props.formStore.data.origin_content || 'a,b';\nlet split_pattern = props.formStore.data.split_pattern || '1';\nlet pattern_template = props.formStore.data.pattern_template || '';\nlet reg_pattern = split_pattern.split(',').map(k => split_dic[k]).join('|');\nlet reg_exp = new RegExp(reg_pattern, 'g');\nlet result = origin_content.split('\\n').filter(k => !!k).map(k => {\n  let _s = k.split(reg_exp);\n  let _t = pattern_template;\n  for (let _i in _s) {\n    _t = _t.replaceAll('{' + _i + '}', _s[_i]);\n  }\n  return _t;\n}).join('\\n');\nprops.formStore.setValues({ result_content: result });"
+                },
+                {
+                    "type": "textarea",
+                    "label": "替换结果模板",
+                    "name": "result_content",
+                    "required": false
+                }
+            ]
+        };
+        let amisScoped = amis.embed('#root', amisJSON);
+    })();
+</script>
+</body>
+</html>

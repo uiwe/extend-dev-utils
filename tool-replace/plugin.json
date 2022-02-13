@@ -1,0 +1,11 @@
+{
+  "main": "replace.html",
+  "logo": "aha.png",
+  "features": [
+    {
+      "code": "replace",
+      "explain": "批量替换攻击",
+      "cmds":["replace", "替换"]
+    }
+  ]
+}
