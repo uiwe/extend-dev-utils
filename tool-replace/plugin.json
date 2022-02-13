@@ -4,7 +4,7 @@
   "features": [
     {
       "code": "replace",
-      "explain": "批量替换攻击",
+      "explain": "批量替换文本",
       "cmds":["replace", "替换"]
     }
   ]
