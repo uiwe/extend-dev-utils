@@ -4,7 +4,8 @@
   "features": [
     {
       "code": "replace",
-      "explain": "批量替换文本",
+      "explain": "批量替换文本,类似csv文件+模板 生成对应渲染文本；实现逻辑：文本内容根据分隔符号，split成数组，然后通过占位符号替换生成文本；举例根据userName和age 生成对应的插入SQL;原文：deamon,18\njohn,12\n;模板：insert user (user_name,age) valuse(\"{0}\",\"{1}\");替换后生成的内容为insert user (user_name,age) valuse(、\"daemon\",\"18\");\ninsert user (user_name,age) valuse(、\"john\",\"12\");",
+
       "cmds":["replace", "替换"]
     }
   ]
