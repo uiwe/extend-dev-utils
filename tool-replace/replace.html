@@ -43,7 +43,7 @@
                     "type": "textarea",
                     "label": "原文",
                     "name": "origin_content",
-                    "description": "例如a,b,c",
+                    "description": "例如【支持多行】:daemon,18",
                     "required": true
                 },
                 {
@@ -77,7 +77,7 @@
                     "type": "textarea",
                     "label": "替换内容模板",
                     "name": "pattern_template",
-                    "description": "例如{0}->{1}",
+                    "description": "例如insert (user_name,age) values (\"{0}\",\"{1}\");",
                     "required": true
                 },
                 {
@@ -90,6 +90,7 @@
                     "type": "textarea",
                     "label": "替换结果模板",
                     "name": "result_content",
+                    "description": "例如insert (user_name,age) values (\"daemon\",\"18\");",
                     "required": false
                 }
             ]
