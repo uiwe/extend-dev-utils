@@ -1,0 +1,37 @@
+#jsonpath {
+    width: 60%;
+    margin-bottom: 10px;
+}
+
+.container {
+    float: left;
+    width: 48%;
+    height: 98%;
+}
+.clear{
+    clear:right;
+    height: 300px;
+}
+
+.container textarea {
+    margin: 2%;
+    width: 98%;
+    height: 98%;
+}
+.t40{
+    margin-top: 40px;
+}
+.w90{
+    width:90%;
+}
+.w60{
+    width:60%;
+}
+.func {
+    width: 90%;
+    margin-top:10px;
+}
+
+#demoNode {
+    font-size: small;
+}

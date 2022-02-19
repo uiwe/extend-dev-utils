@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<script>
+//参考代码来源： https://gitee.com/stoneMiss/JSONPath
+</script>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>JSON数据处理</title>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon" />
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+<h2>JSON数据处理</h2>
+<form>
+    <div>
+        <label><b>JSONPath:</b>
+            <input id="jsonpath" placeholder="$.books" value="$.[*]" />
+        </label>
+    </div>
+    <div class="clear">
+        <div id="jsonSampleContainer" class="container">
+            <label><b>JSON 内容:</b>
+                <textarea id="jsonSample" placeholder="{&quot;books&quot;: []}">[1,2,3,4]</textarea>
+            </label>
+        </div>
+        <div id="resultContainer" class="container">
+            <label><b>Results:</b>
+                <textarea id="results"></textarea>
+            </label>
+        </div>
+    </div>
+
+    <div class="t40">
+        <label>for 循环处理:</label>
+        <input id="event-handler-for" value="(i)=>{return i;}" class="w60" />
+    </div>
+    <div class="func">
+        <label>contexts处理:</label>
+        <input id="event-handler-collect" value="(i)=>{return i;}"  class="w60"/>
+    </div>
+    <div class="func">
+        <input type="button" value="计算" onclick="cal()"/>
+    </div>
+    <div class="func">
+    <label>for 循环处理结果:</label>
+            <input id="event-handler-result" class="w60"/>
+    </div>
+</form>
+<script src="index-browser-umd.min.js"></script>
+<script src="index.js"></script>
+<script>
+    function cal(){
+        action();
+    }
+</script>
+</body>
+</html>

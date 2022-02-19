@@ -1,0 +1,11 @@
+{
+  "main": "jsonpath.html",
+  "logo": "aha.png",
+  "features": [
+    {
+      "code": "jsonpath",
+      "explain": "jsonpath工具",
+      "cmds":["jpath", "jsonpath"]
+    }
+  ]
+}
