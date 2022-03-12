@@ -1,0 +1,12 @@
+{
+  "main": "index.html",
+  "logo": "aha.png",
+  "features": [
+    {
+      "code": "barcode",
+      "explain": "barcode生成工具",
+
+      "cmds":["barcode"]
+    }
+  ]
+}

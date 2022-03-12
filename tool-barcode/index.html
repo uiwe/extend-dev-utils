@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>barcode 工具</title>
+<!--    <link rel="stylesheet" href="index.css" />-->
+</head>
+<body>
+<script src="JsBarcode.all.min.js"></script>
+<div id="bottom-content">
+    <h2>条形码生成工具</h2>
+    <div>
+        <textarea id="code" style="width: 500px;height: 80px" >124343</textarea>
+    </div>
+    <h3>结果</h3>
+    <div id="result"><svg id="barcode"></svg></div>
+
+    <script>
+        var code = document.getElementById("code");
+
+        function gen(){
+            var value = document.getElementById("code").value.trim();
+            var result = document.getElementById("result");
+            var cnodes = result.childNodes;
+            for(var i of cnodes){
+                result.removeChild(i);
+            }
+            if(!!value){
+
+
+                value.split("\n").filter(a=> !!a).forEach((v,index,self)=>{
+                    var div = document.createElement("div");
+                    var svg = document.createElement("canvas")
+                    div.appendChild(svg);
+                    JsBarcode(svg, v);
+                    result.appendChild(div);
+                })
+            }
+        }
+
+        // code.addEventListener('blur',function(e){
+        //     gen();
+        // })
+        code.addEventListener("keydown", keydown);
+        function keydown(event) {
+            if (event.keyCode !== 13)
+                return;
+            gen();
+        }
+    </script>
+</div>
+</body>
+</html>
