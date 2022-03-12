@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>art template</title>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon" />
+<!--    <link rel="stylesheet" href="index.css" />-->
+</head>
+<style type="text/css" media="screen">
+    * { padding: 0; margin: 0;}
+
+</style>
+<body>
+
+<div id="bottom-content" style="margin: 5px">
+    <h2 style="margin-bottom:8px">模板渲染</h2>
+    <div>
+        <textarea id="json" style="width: 500px;height: 200px" >{"target":["a","b","c"]}</textarea>
+    </div>
+    <div>
+        <textarea id="template" style="width: 500px;height: 50px" >{{each target}}{{$index}}=>{{$value}}{{/each}}</textarea>
+        </br>
+        <a target="_blank" href="https://aui.github.io/art-template/zh-cn/docs/syntax.html#%E6%9D%A1%E4%BB%B6">帮助</a>
+    </div>
+    <div>
+        <input onclick="action()" value="artTemplate模板" type="button">
+    </div>
+    <div>
+        <textarea id="result" style="width: 500px;height: 200px">
+        </textarea>
+    </div>
+    <script src="template-web.js"></script>
+    <script>
+        function action(){
+            var json = document.getElementById("json").value.trim();
+            var temp = document.getElementById("template").value.trim();
+            var render = template.compile(temp);
+            var html = render(JSON.parse(json));
+            document.getElementById("result").value = html;
+        }
+
+    </script>
+
+</div>
+</body>
+</html>
